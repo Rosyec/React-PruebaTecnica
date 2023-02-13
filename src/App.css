@@ -1,5 +1,7 @@
 input {
     width: 100%;
+    padding-left: 2em;
+    padding-right: 2em;
     outline: none;
     border: none;
     border-radius: 999px 999px 999px 999px;

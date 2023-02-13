@@ -1,13 +1,12 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useCrud } from "../../hooks/useCrud";
 import { useForm } from "../../hooks/useForm";
 import { User } from "../../interfaces/user";
-import { createUser, deleteUser, getRandomImage, getUserById, updateUser } from "../../services/users.service";
+import { getRandomImage, getUserById } from "../../services/users.service";
 import { Modal } from "../modal/Modal";
 
 export const Form = ({ title, id, btnDelete }: Props) => {
 
-    const navigate = useNavigate();
     const { onInputChange, onReset, FormState, setFormState, first_name, second_name, avatar, email } = useForm<User>({
         id: '',
         first_name: '',
@@ -16,6 +15,7 @@ export const Form = ({ title, id, btnDelete }: Props) => {
         avatar: '',
         email: ''
     });
+    const { createU, updateU, deleteU } = useCrud({ state: FormState });
 
     useEffect(() => {
         if (id) {
@@ -35,13 +35,6 @@ export const Form = ({ title, id, btnDelete }: Props) => {
         }
     }
 
-    const update = async () => {
-        const result = await updateUser(FormState);
-        if (result) {
-            navigate('/app/home', { replace: true });
-        }
-    }
-
     const getImage = async () => {
         const result = await getRandomImage();
         if (result.length > 0) {
@@ -50,30 +43,16 @@ export const Form = ({ title, id, btnDelete }: Props) => {
         }
     }
 
-    const create = async () => {
-        const result = await createUser(FormState);
-        if (result) {
-            navigate('/app/home', { replace: true });
-        }
-    }
-
-    const delUser = async () => {
-        const result = await deleteUser(FormState);
-        if (result) {
-            navigate('/app/home', { replace: true });
-        }
-    }
-
     const onSubmit = async () => {
         if (id) {
-            update();
+            updateU();
         } else {
-            create();
+            createU();
         }
     }
 
     const onDelete = () => {
-        delUser();
+        deleteU();
     }
 
     return (
