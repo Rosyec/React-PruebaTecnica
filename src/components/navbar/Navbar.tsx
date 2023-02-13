@@ -12,19 +12,19 @@ export const Navbar = () => {
                         <ul className="navbar-nav">
                             <li className="nav-item">
                                 <NavLink to={ '/app/home' } className={ ({isActive}) => isActive ? 'nav-link active fw-semibold' : 'nav-link' }>
-                                    <a className="nav-link" aria-current="page" href="#">Home</a>
+                                    Home
                                 </NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to={ '/app/create' } className={ ({isActive}) => isActive ? 'nav-link active fw-semibold' : 'nav-link' }>
-                                    <a className="nav-link" aria-current="page" href="#">Create</a>
+                                    Create
                                 </NavLink>
                             </li>
-                            <li className="nav-item">
+                            {/* <li className="nav-item">
                                 <NavLink to={ '/app/edit' } className={ ({isActive}) => isActive ? 'nav-link active fw-semibold' : 'nav-link' }>
-                                    <a className="nav-link" aria-current="page" href="#">Edit</a>
+                                    Edit
                                 </NavLink>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

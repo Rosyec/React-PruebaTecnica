@@ -23,8 +23,8 @@ export const RouterApp = createBrowserRouter([
         element: <Create/>
       },
       {
-        path: 'edit',
-        element: <Edit/>
+        path: 'edit/:id',
+        element: <Create/>
       },
       {
         path: '*',
