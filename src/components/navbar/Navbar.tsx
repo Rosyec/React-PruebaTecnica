@@ -4,7 +4,7 @@ export const Navbar = () => {
         <>
             <nav className="navbar navbar-expand-lg">
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">App</a>
+                    <a className="navbar-brand" href="#"><i className="bi bi-gear-fill"></i> App</a>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
@@ -20,11 +20,6 @@ export const Navbar = () => {
                                     Create
                                 </NavLink>
                             </li>
-                            {/* <li className="nav-item">
-                                <NavLink to={ '/app/edit' } className={ ({isActive}) => isActive ? 'nav-link active fw-semibold' : 'nav-link' }>
-                                    Edit
-                                </NavLink>
-                            </li> */}
                         </ul>
                     </div>
                 </div>

@@ -10,19 +10,23 @@ export const Home = () => {
 
   return (
     <>
-      <div className="row justify-content-center">
-        <div className="col-4">
-          {
-            (isLoading) 
-            ?
-            <h1>Cargando...</h1>
-            :
-            user.map((user) => {
-              return (
-                <Card key={user.id} user={user} />
-              )
-            })
-          }
+      <div className="container">
+        <div className="row">
+            {
+              (isLoading)
+                ?
+                <div className="col-md-12">
+                  <h1>Cargando...</h1>
+                </div>
+                :
+                user.map((user) => {
+                  return (
+                    <div key={user.id} className="col-md-4 col-sm-10">
+                      <Card user={user} />
+                    </div>
+                  )
+                })
+            }
         </div>
       </div>
     </>
