@@ -1,7 +1,9 @@
 import axios, { AxiosInstance } from 'axios'
+import { Image } from '../interfaces/image';
 import { User } from '../interfaces/user';
 
 const API: AxiosInstance = axios.create({ baseURL: 'https://635017b9df22c2af7b630c3e.mockapi.io/api/v1' });
+const UNSPLASH: AxiosInstance = axios.create({ baseURL: 'https://api.unsplash.com/photos' });
 
 const getAllUsers = async () => {
     try {
@@ -53,6 +55,16 @@ const deleteUser = async (data: User) => {
     }
 }
 
+const getRandomImage = async () => {
+    try {
+        const response = await UNSPLASH.get('/random?count=1&client_id=C_9AXZHwVEwr8nZE27HJ5B50wGT5_2Zs2fzwaplksSU');
+        const user: Image[] = response.data;
+        return user;
+    } catch (error) {
+        return [];
+    }
+}
+
 const EmptyData = {
     id: '',
     first_name: '',
@@ -67,5 +79,6 @@ export {
     createUser,
     getUserById,
     updateUser,
-    deleteUser
+    deleteUser,
+    getRandomImage
 }

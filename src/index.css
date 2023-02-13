@@ -2,3 +2,12 @@ body {
     background-color: #FAACA8;
     background-image: linear-gradient(19deg, #FAACA8 0%, #DDD6F3 100%);
 }
+
+@font-face {
+    font-family: 'Roboto';
+    src: local('Roboto') url(./assets/Roboto-Light.ttf) format("truetype");
+  }
+  
+  html{
+    font-family: Roboto;
+  }

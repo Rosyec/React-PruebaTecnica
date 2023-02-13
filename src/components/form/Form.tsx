@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { User } from "../../interfaces/user";
-import { createUser, deleteUser, getUserById, updateUser } from "../../services/users.service";
+import { createUser, deleteUser, getRandomImage, getUserById, updateUser } from "../../services/users.service";
 import { Modal } from "../modal/Modal";
 
 export const Form = ({ title, id, btnDelete }: Props) => {
@@ -24,6 +24,10 @@ export const Form = ({ title, id, btnDelete }: Props) => {
         onReset();
     }, [id]);
 
+    useEffect(() => {
+        getImage();
+    }, []);
+
     const loadUserById = async (id: string) => {
         const user = await getUserById({ ...FormState, id });
         if (user) {
@@ -37,6 +41,15 @@ export const Form = ({ title, id, btnDelete }: Props) => {
             navigate('/app/home', { replace: true });
         }
     }
+
+    const getImage = async () => {
+        const result = await getRandomImage();
+        if (result.length > 0) {
+            const [ data ] = result;
+            setFormState( { ...FormState, avatar: data.urls.regular } );
+        }
+    }
+
     const create = async () => {
         const result = await createUser(FormState);
         if (result) {
@@ -67,10 +80,10 @@ export const Form = ({ title, id, btnDelete }: Props) => {
         <>
             <div className="col-6">
                 <h1> {title} </h1>
-                <input className='form-control my-1' onChange={onInputChange} value={first_name} type="text" name="first_name" placeholder='First name' />
-                <input className='form-control my-1' onChange={onInputChange} value={second_name} type="text" name="second_name" placeholder='Second name' />
-                <input className='form-control my-1' onChange={onInputChange} value={avatar} type="text" name="avatar" placeholder='Avatar' />
-                <input className='form-control my-1' onChange={onInputChange} value={email} type="email" name="email" placeholder='Email' />
+                <input className='my-1' onChange={onInputChange} value={first_name} type="text" name="first_name" placeholder='First name' />
+                <input className='my-1' onChange={onInputChange} value={second_name} type="text" name="second_name" placeholder='Second name' />
+                <input className='my-1' onChange={onInputChange} value={avatar} type="text" name="avatar" placeholder='Avatar' />
+                <input className='my-1' onChange={onInputChange} value={email} type="email" name="email" placeholder='Email' />
                 <div className="row d-flex justify-content-center mt-3">
                     {
                         (btnDelete) &&

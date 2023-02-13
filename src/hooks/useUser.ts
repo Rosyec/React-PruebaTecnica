@@ -24,8 +24,3 @@ export const useGetUser = () => {
         isLoading,
     }
 }
-
-interface Props {
-    loading: boolean
-}
-

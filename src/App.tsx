@@ -7,7 +7,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <div className="container text-center" style={{minHeight: '90vh'}}>
+      <div className="container text-center d-flex align-items-center my-3" style={{minHeight: '90vh'}}>
         <Outlet></Outlet>
       </div>
       <Footer/>

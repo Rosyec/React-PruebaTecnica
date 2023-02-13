@@ -16,7 +16,7 @@ export const Home = () => {
               (isLoading)
                 ?
                 <div className="col-md-12">
-                  <h1>Cargando...</h1>
+                  <span className="loader"></span>
                 </div>
                 :
                 user.map((user) => {

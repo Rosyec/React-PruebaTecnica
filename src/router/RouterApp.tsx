@@ -7,7 +7,6 @@ export const RouterApp = createBrowserRouter([
   {
     path: "/",
     element: <Navigate to={ '/app/home' }/>,
-
   },
   {
     path: '/app',
