@@ -4,9 +4,10 @@ import { useForm } from "../../hooks/useForm";
 import { User } from "../../interfaces/user";
 import { getRandomImage, getUserById } from "../../services/users.service";
 import { Modal } from "../modal/Modal";
+import { useQuery } from "react-query";
 
 export const Form = ({ title, id, btnDelete }: Props) => {
-
+    
     const { onInputChange, onReset, FormState, setFormState, first_name, second_name, avatar, email } = useForm<User>({
         id: '',
         first_name: '',
@@ -15,6 +16,7 @@ export const Form = ({ title, id, btnDelete }: Props) => {
         avatar: '',
         email: ''
     });
+    const getImageQuery = useQuery('getImage', getRandomImage);
     const { createU, updateU, deleteU } = useCrud({ state: FormState });
 
     useEffect(() => {
@@ -36,7 +38,7 @@ export const Form = ({ title, id, btnDelete }: Props) => {
     }
 
     const getImage = async () => {
-        const result = await getRandomImage();
+        const result =  getImageQuery.data || [];
         if (result.length > 0) {
             const [ data ] = result;
             setFormState( { ...FormState, avatar: data.urls.regular } );

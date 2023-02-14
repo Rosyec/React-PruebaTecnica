@@ -57,7 +57,7 @@ const deleteUser = async (data: User) => {
 
 const getRandomImage = async () => {
     try {
-        const response = await UNSPLASH.get('/random?count=1&client_id=C_9AXZHwVEwr8nZE27HJ5B50wGT5_2Zs2fzwaplksSU');
+        const response = await UNSPLASH.get('/random?count=1&client_id=58Inw7FqHTcPfAaskTUo9rLsLktobhjJIk8yrhw8k-M');
         const user: Image[] = response.data;
         return user;
     } catch (error) {

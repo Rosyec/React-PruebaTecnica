@@ -21,7 +21,7 @@ export const Home = () => {
                 :
                 user.map((user) => {
                   return (
-                    <div key={user.id} className="col-md-4 col-sm-10">
+                    <div key={user.id} className="col-md-4 col-sm-10 my-1">
                       <Card user={user} />
                     </div>
                   )
